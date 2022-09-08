@@ -1,26 +1,39 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <menu-list :listMenu="listMenu"></menu-list>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MenuList from "./components/MenuList.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    MenuList,
+  },
+  data() {
+    return {
+      listMenu: [
+        { id: 1, name: "Home" },
+        { id: 2, name: "Services" },
+        { id: 3, name: "About" },
+        { id: 4, name: "Contact Us" },
+      ],
+      students: [
+        { id: 1, name: "Nguyen Van Quyet" },
+        { id: 2, name: "Tran Van Bo" },
+        { id: 3, name: "Le Van Tai" },
+        { id: 4, name: "Dang Trong Huy" },
+      ],
+    };
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 62.5%;
 }
 </style>
