@@ -1,28 +1,23 @@
 <template>
-  <li @click="handleDisplayName">
+  <li @click="handleDisplayName" :class="handleActive">
     {{ name }}
   </li>
 </template>
 
 <script>
 export default {
-  props: ["name"],
-  data() {
-    return {
-      selected: false,
-    };
-  },
+  props: ["name", "id", "selected"],
+
   methods: {
     handleDisplayName() {
       this.$emit("display-name", this.name);
-      this.selected = true;
     },
   },
-  // computed: {
-  //   selectedMenu() {
-  //     return { active: this.selected };
-  //   },
-  // },
+  computed: {
+    handleActive() {
+      return this.id === this.selected ? "active" : "";
+    },
+  },
 };
 </script>
 

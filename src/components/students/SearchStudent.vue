@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" placeholder="Search" @change="handleValueSearch" />
+    <input type="text" placeholder="Search" @input="handleValueSearch" />
   </div>
 
   <div>
@@ -20,22 +20,21 @@ export default {
   data() {
     return {
       enteredSearch: "",
-      listSearchStudents: [],
+      listSearchStudents: this.students,
     };
   },
   methods: {
     handleValueSearch(e) {
-      this.listSearchStudents = [];
+      console.log("a");
       this.enteredSearch = e.target.value;
-      const resultSearch = this.students.forEach((student) => {
+      this.listSearchStudents = this.students.filter((student) => {
         if (
           student.name.includes(this.enteredSearch) ||
           student.class.includes(this.enteredSearch)
         ) {
-          this.listSearchStudents.push(student);
+          return student;
         }
       });
-      console.log(resultSearch);
     },
   },
 };

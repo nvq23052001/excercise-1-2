@@ -6,6 +6,9 @@
         v-for="menu in listMenu"
         :key="menu.id"
         :name="menu.name"
+        :id="menu.id"
+        @click="handleSelected(menu.id)"
+        :selected="selected"
       />
     </ul>
     <h3 v-if="nameItem">Selected: {{ nameItem }}</h3>
@@ -19,6 +22,7 @@ export default {
   data() {
     return {
       nameItem: "",
+      selected: null,
     };
   },
   components: {
@@ -27,6 +31,9 @@ export default {
   methods: {
     handleDisplay(name) {
       this.nameItem = name;
+    },
+    handleSelected(id) {
+      this.selected = id;
     },
   },
 };
