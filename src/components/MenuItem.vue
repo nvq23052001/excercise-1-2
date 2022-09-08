@@ -7,6 +7,7 @@
 <script>
 export default {
   props: ["name", "id", "selected"],
+  emits: ["display-name"],
 
   methods: {
     handleDisplayName() {
