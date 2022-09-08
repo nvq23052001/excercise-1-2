@@ -19,6 +19,7 @@
 import MenuItem from "./MenuItem.vue";
 export default {
   props: ["listMenu"],
+  emits: ["display-name"],
   data() {
     return {
       nameItem: "",
