@@ -25,7 +25,6 @@ export default {
   },
   methods: {
     handleValueSearch(e) {
-      console.log("a");
       this.enteredSearch = e.target.value;
       this.listSearchStudents = this.students.filter((student) => {
         if (
@@ -44,7 +43,7 @@ export default {
 div {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 input {
   width: 510px;

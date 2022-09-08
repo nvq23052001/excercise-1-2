@@ -24,7 +24,9 @@ export default {
         { id: 1, name: "Nguyen Van Quyet", class: "DT50" },
         { id: 2, name: "Tran Van Bo", class: "CK18" },
         { id: 3, name: "Le Van Tai", class: "KD35" },
-        { id: 4, name: "Dang Trong Huy", class: "DT50" },
+        { id: 4, name: "Nguyen Van A", class: "KD35" },
+        { id: 5, name: "Nguyen Van B", class: "DT50" },
+        { id: 6, name: "Nguyen Van C", class: "CK18" },
       ],
     };
   },
