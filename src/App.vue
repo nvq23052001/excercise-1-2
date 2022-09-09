@@ -1,6 +1,6 @@
 <template>
-  <MenuList :listMenu="listMenu"></MenuList>
-  <SearchStudent :students="students"></SearchStudent>
+  <menu-list :listMenu="listMenu"></menu-list>
+  <search-student :students="students"></search-student>
 </template>
 
 <script setup>

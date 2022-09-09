@@ -5,7 +5,7 @@
 
   <div>
     <ul>
-      <StudentsList :listStudents="listSearchStudents"></StudentsList>
+      <students-list :listStudents="listSearchStudents"></students-list>
     </ul>
   </div>
 </template>
