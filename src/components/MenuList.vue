@@ -1,42 +1,31 @@
 <template>
   <nav>
     <ul>
-      <menu-item
-        @display-name="handleDisplay"
-        v-for="menu in listMenu"
-        :key="menu.id"
-        :name="menu.name"
-        :id="menu.id"
-        @click="handleSelected(menu.id)"
-        :selected="selected"
-      />
+      <li
+        v-for="itemMenu in props.listMenu"
+        :key="itemMenu.id"
+        :class="{ active: selected === itemMenu.id }"
+        @click="handleDisplay(itemMenu)"
+      >
+        {{ itemMenu.name }}
+      </li>
     </ul>
     <h3 v-if="nameItem">Selected: {{ nameItem }}</h3>
   </nav>
 </template>
 
-<script>
-import MenuItem from "./MenuItem.vue";
-export default {
-  props: ["listMenu"],
-  data() {
-    return {
-      nameItem: "",
-      selected: null,
-    };
-  },
-  components: {
-    MenuItem,
-  },
-  methods: {
-    handleDisplay(name) {
-      this.nameItem = name;
-    },
-    handleSelected(id) {
-      this.selected = id;
-    },
-  },
-};
+<script setup>
+import { ref, defineProps } from "vue";
+
+const props = defineProps(["listMenu"]);
+
+const nameItem = ref("");
+const selected = ref(null);
+
+function handleDisplay(item) {
+  nameItem.value = item.name;
+  selected.value = item.id;
+}
 </script>
 
 <style scoped>
@@ -52,6 +41,22 @@ h3 {
   font-weight: 200;
   text-align: center;
   margin-top: 20px;
+}
+
+li {
+  list-style: none;
+  background-color: #eeeeee;
+  color: #7c8585;
+  padding: 15px 25px;
+  font-weight: 500;
+  font-size: 2.2rem;
+  cursor: pointer;
+}
+
+li:hover,
+li.active {
+  background-color: #49c7c2;
+  color: #fff;
 }
 </style>
 >

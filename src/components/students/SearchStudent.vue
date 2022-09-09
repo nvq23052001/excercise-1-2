@@ -5,38 +5,32 @@
 
   <div>
     <ul>
-      <students-list :listStudents="listSearchStudents"></students-list>
+      <StudentsList :listStudents="listSearchStudents"></StudentsList>
     </ul>
   </div>
 </template>
 
-<script>
+<script setup>
+import { ref, defineProps } from "vue";
+
 import StudentsList from "./StudentsList.vue";
-export default {
-  components: {
-    StudentsList,
-  },
-  props: ["students"],
-  data() {
-    return {
-      enteredSearch: "",
-      listSearchStudents: this.students,
-    };
-  },
-  methods: {
-    handleValueSearch(e) {
-      this.enteredSearch = e.target.value;
-      this.listSearchStudents = this.students.filter((student) => {
-        if (
-          student.name.includes(this.enteredSearch) ||
-          student.class.includes(this.enteredSearch)
-        ) {
-          return student;
-        }
-      });
-    },
-  },
-};
+
+const props = defineProps(["students"]);
+
+const enteredSearch = ref("");
+const listSearchStudents = ref(props.students);
+
+function handleValueSearch(e) {
+  enteredSearch.value = e.target.value;
+  listSearchStudents.value = props.students.filter((student) => {
+    if (
+      student.name.includes(enteredSearch.value) ||
+      student.class.includes(enteredSearch.value)
+    ) {
+      return student;
+    }
+  });
+}
 </script>
 
 <style scoped>

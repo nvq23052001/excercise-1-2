@@ -1,13 +1,13 @@
 <template>
-  <li v-for="student in listStudents" :key="student.id">
+  <li v-for="student in props.listStudents" :key="student.id">
     <span>{{ student.name }}</span>
     <span>{{ student.class }}</span>
   </li>
 </template>
-<script>
-export default {
-  props: ["listStudents"],
-};
+<script setup>
+import { defineProps } from "vue";
+
+const props = defineProps(["listStudents"]);
 </script>
 
 <style scoped>
