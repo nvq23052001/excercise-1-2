@@ -8,10 +8,11 @@
       <students-list :listStudents="listSearchStudents"></students-list>
     </ul>
   </div>
+  <p>{{ react }}</p>
 </template>
 
 <script setup>
-import { ref, defineProps, watch } from "vue";
+import { ref, defineProps, watch, reactive } from "vue";
 
 import StudentsList from "./StudentsList.vue";
 
@@ -20,15 +21,19 @@ const props = defineProps(["students"]);
 const enteredSearch = ref("");
 const listSearchStudents = ref(props.students);
 
+const react = reactive(["quyet", "nam"]);
+
 watch(enteredSearch, function () {
-  listSearchStudents.value = props.students.filter((student) => {
-    if (
-      student.name.includes(enteredSearch.value) ||
-      student.class.includes(enteredSearch.value)
-    ) {
-      return student;
-    }
-  });
+  react.push("test");
+  console.log(react);
+  // listSearchStudents.value = props.students.filter((student) => {
+  //   if (
+  //     student.name.includes(enteredSearch.value) ||
+  //     student.class.includes(enteredSearch.value)
+  //   ) {
+  //     return student;
+  //   }
+  // });
 });
 
 // function handleValueSearch(e) {

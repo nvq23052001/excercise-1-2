@@ -4,19 +4,19 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { reactive } from "vue";
 
 import MenuList from "./components/MenuList.vue";
 import SearchStudent from "./components/students/SearchStudent.vue";
 
-const listMenu = ref([
+const listMenu = reactive([
   { id: 1, name: "Home" },
   { id: 2, name: "Services" },
   { id: 3, name: "About" },
   { id: 4, name: "Contact Us" },
 ]);
 
-const students = ref([
+const students = reactive([
   { id: 1, name: "Nguyen Van Quyet", class: "DT50" },
   { id: 2, name: "Tran Van Bo", class: "CK18" },
   { id: 3, name: "Le Van Tai", class: "KD35" },
