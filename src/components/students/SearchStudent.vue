@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" placeholder="Search" @input="handleValueSearch" />
+    <input type="text" placeholder="Search" v-model="enteredSearch" />
   </div>
 
   <div>
@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps } from "vue";
+import { ref, defineProps, watch } from "vue";
 
 import StudentsList from "./StudentsList.vue";
 
@@ -20,8 +20,7 @@ const props = defineProps(["students"]);
 const enteredSearch = ref("");
 const listSearchStudents = ref(props.students);
 
-function handleValueSearch(e) {
-  enteredSearch.value = e.target.value;
+watch(enteredSearch, function () {
   listSearchStudents.value = props.students.filter((student) => {
     if (
       student.name.includes(enteredSearch.value) ||
@@ -30,7 +29,19 @@ function handleValueSearch(e) {
       return student;
     }
   });
-}
+});
+
+// function handleValueSearch(e) {
+//   enteredSearch.value = e.target.value;
+//   listSearchStudents.value = props.students.filter((student) => {
+//     if (
+//       student.name.includes(enteredSearch.value) ||
+//       student.class.includes(enteredSearch.value)
+//     ) {
+//       return student;
+//     }
+//   });
+// }
 </script>
 
 <style scoped>
